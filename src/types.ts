@@ -41,14 +41,21 @@ export interface Character {
   };
 }
 
+export interface ScoredTrait {
+  key: TraitKey;
+  score: number;
+}
+
+export interface TraitMetadata {
+  name: string;
+  description: string;
+}
+
 export interface Polycule {
   id: string;
   characters: readonly Character[];
   compatibility: {
     score: number;
-    traits: ReadonlyArray<{
-      key: TraitKey;
-      score: number;
-    }>;
+    traits: readonly ScoredTrait[];
   };
 }

@@ -1,8 +1,10 @@
 import AnimatedNumber from '../ui/AnimatedNumber';
 import AppContext from './AppContext';
+import PolyculeProfileDrawer from './PolyculeProfileDrawer';
 import React from 'react';
 import classNames from 'classnames';
 import normalizeCompatibilityScore from '../util/normalizeCompatibilityScore';
+import useClickableAction from '../hooks/useClickableAction';
 import type { Polycule } from '../types';
 
 type Props = {
@@ -20,10 +22,20 @@ export default function PolyculeCard({
   const [isHovering, setIsHovering] = React.useState(false);
   const { hasLoadedOnce } = React.useContext(AppContext);
   const { score } = polycule.compatibility;
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
 
-  const onAnimationEnd = React.useCallback(() => setIsAnimationEnded(true), []);
+  const peopleNames = polycule.characters.map(c => c.name).join(', ');
+
+  const onTickerAnimationEnd = React.useCallback(
+    () => setIsAnimationEnded(true),
+    [],
+  );
   const onMouseOver = React.useCallback(() => setIsHovering(true), []);
   const onMouseOut = React.useCallback(() => setIsHovering(false), []);
+  const [onCardClick, onCardKeyPress] = useClickableAction(
+    () => setIsDrawerOpen(true),
+    [],
+  );
 
   const cardClassNames = classNames(
     'relative bg-white border border-gray-300 rounded shadow-md cursor-pointer hover:border-gray-400 hover:shadow-2xl hover:transition-all transition-all',
@@ -53,59 +65,77 @@ export default function PolyculeCard({
     },
   );
 
+  const profileDrawer = (
+    <PolyculeProfileDrawer
+      open={isDrawerOpen}
+      onClose={() => setIsDrawerOpen(false)}
+      polycule={polycule}
+    />
+  );
+
   if (size === 'large' || size === 'medium') {
     return (
-      <div
-        className={cardClassNames}
-        onMouseOver={onMouseOver}
-        onFocus={onMouseOver}
-        onMouseOut={onMouseOut}
-        onBlur={onMouseOut}
-      >
-        <div className={badgeClassNames}>{position}</div>
-        <div className="flex flex-col items-center space-y-4">
-          <p className={characterNamesClassNames}>
-            {polycule.characters.map(c => c.name).join(', ')}
-          </p>
-          <p className={size === 'large' ? 'text-8xl' : 'text-5xl'}>
-            <AnimatedNumber
-              useDurationNoise
-              key={polycule.id}
-              durationMs={hasLoadedOnce ? 500 : 3500}
-              initialNumber={0}
-              finalNumber={score}
-              numberTransformer={x => normalizeCompatibilityScore(x)}
-              onAnimationEnd={onAnimationEnd}
-            />
-          </p>
+      <>
+        <div
+          role="button"
+          tabIndex={0}
+          className={cardClassNames}
+          onMouseOver={onMouseOver}
+          onFocus={onMouseOver}
+          onMouseOut={onMouseOut}
+          onBlur={onMouseOut}
+          onClick={onCardClick}
+          onKeyPress={onCardKeyPress}
+        >
+          <div className={badgeClassNames}>{position}</div>
+          <div className="flex flex-col items-center space-y-4">
+            <p className={characterNamesClassNames}>{peopleNames}</p>
+            <p className={size === 'large' ? 'text-8xl' : 'text-5xl'}>
+              <AnimatedNumber
+                useDurationNoise
+                key={polycule.id}
+                durationMs={hasLoadedOnce ? 500 : 3500}
+                initialNumber={0}
+                finalNumber={score}
+                numberTransformer={x => normalizeCompatibilityScore(x)}
+                onAnimationEnd={onTickerAnimationEnd}
+              />
+            </p>
+          </div>
         </div>
-      </div>
+        {profileDrawer}
+      </>
     );
   }
 
   // size is 'small'
   return (
-    <div
-      className={cardClassNames}
-      onMouseOver={onMouseOver}
-      onFocus={onMouseOver}
-      onMouseOut={onMouseOut}
-      onBlur={onMouseOut}
-    >
-      <div className="flex-none px-2 font-mono text-center">{position}</div>
-      <p className={characterNamesClassNames}>
-        {polycule.characters.map(c => c.name).join(', ')}
-      </p>
-      <p className="px-2">
-        <AnimatedNumber
-          useDurationNoise
-          initialNumber={0}
-          finalNumber={score}
-          numberTransformer={x => normalizeCompatibilityScore(x)}
-          onAnimationEnd={onAnimationEnd}
-          durationMs={hasLoadedOnce ? 500 : 2500}
-        />
-      </p>
-    </div>
+    <>
+      <div
+        role="button"
+        tabIndex={0}
+        className={cardClassNames}
+        onMouseOver={onMouseOver}
+        onFocus={onMouseOver}
+        onMouseOut={onMouseOut}
+        onBlur={onMouseOut}
+        onClick={onCardClick}
+        onKeyPress={onCardKeyPress}
+      >
+        <div className="flex-none px-2 font-mono text-center">{position}</div>
+        <p className={characterNamesClassNames}>{peopleNames}</p>
+        <p className="px-2">
+          <AnimatedNumber
+            useDurationNoise
+            initialNumber={0}
+            finalNumber={score}
+            numberTransformer={x => normalizeCompatibilityScore(x)}
+            onAnimationEnd={onTickerAnimationEnd}
+            durationMs={hasLoadedOnce ? 500 : 2500}
+          />
+        </p>
+      </div>
+      {profileDrawer}
+    </>
   );
 }

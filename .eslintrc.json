@@ -40,6 +40,12 @@
     ],
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
+    "react-hooks/exhaustive-deps": [
+      "warn",
+      {
+        "additionalHooks": "useClickableAction"
+      }
+    ],
     "import/extensions": [
       "error",
       "ignorePackages",
