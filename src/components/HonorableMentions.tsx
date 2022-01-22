@@ -2,13 +2,18 @@ import PolyculeCard from './PolyculeCard';
 import type { Polycule } from '../types';
 
 type Props = {
+  onCardClick: (polycule: Polycule) => void;
   polycules: readonly Polycule[];
 };
 
-export default function HonorableMentions({ polycules }: Props): JSX.Element {
+export default function HonorableMentions({
+  onCardClick,
+  polycules,
+}: Props): JSX.Element {
   const cards = polycules.map((polycule, i) => (
     <PolyculeCard
       key={polycule.id}
+      onCardClick={onCardClick}
       polycule={polycule}
       position={i + 2}
       size="medium"

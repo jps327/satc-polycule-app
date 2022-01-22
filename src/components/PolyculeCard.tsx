@@ -1,6 +1,5 @@
 import AnimatedNumber from '../ui/AnimatedNumber';
 import AppContext from './AppContext';
-import PolyculeProfileDrawer from './PolyculeProfileDrawer';
 import React from 'react';
 import classNames from 'classnames';
 import normalizeCompatibilityScore from '../util/normalizeCompatibilityScore';
@@ -8,12 +7,14 @@ import useClickableAction from '../hooks/useClickableAction';
 import type { Polycule } from '../types';
 
 type Props = {
+  onCardClick: (polycule: Polycule) => void;
   polycule: Polycule;
   position: number;
   size: 'large' | 'medium' | 'small';
 };
 
 export default function PolyculeCard({
+  onCardClick,
   polycule,
   position,
   size,
@@ -22,7 +23,6 @@ export default function PolyculeCard({
   const [isHovering, setIsHovering] = React.useState(false);
   const { hasLoadedOnce } = React.useContext(AppContext);
   const { score } = polycule.compatibility;
-  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
 
   const peopleNames = polycule.characters.map(c => c.name).join(', ');
 
@@ -32,9 +32,9 @@ export default function PolyculeCard({
   );
   const onMouseOver = React.useCallback(() => setIsHovering(true), []);
   const onMouseOut = React.useCallback(() => setIsHovering(false), []);
-  const [onCardClick, onCardKeyPress] = useClickableAction(
-    () => setIsDrawerOpen(true),
-    [],
+  const [onClick, onKeyPress] = useClickableAction(
+    () => onCardClick(polycule),
+    [polycule, onCardClick],
   );
 
   const cardClassNames = classNames(
@@ -65,52 +65,8 @@ export default function PolyculeCard({
     },
   );
 
-  const profileDrawer = (
-    <PolyculeProfileDrawer
-      open={isDrawerOpen}
-      onClose={() => setIsDrawerOpen(false)}
-      polycule={polycule}
-    />
-  );
-
   if (size === 'large' || size === 'medium') {
     return (
-      <>
-        <div
-          role="button"
-          tabIndex={0}
-          className={cardClassNames}
-          onMouseOver={onMouseOver}
-          onFocus={onMouseOver}
-          onMouseOut={onMouseOut}
-          onBlur={onMouseOut}
-          onClick={onCardClick}
-          onKeyPress={onCardKeyPress}
-        >
-          <div className={badgeClassNames}>{position}</div>
-          <div className="flex flex-col items-center space-y-4">
-            <p className={characterNamesClassNames}>{peopleNames}</p>
-            <p className={size === 'large' ? 'text-8xl' : 'text-5xl'}>
-              <AnimatedNumber
-                useDurationNoise
-                key={polycule.id}
-                durationMs={hasLoadedOnce ? 500 : 3500}
-                initialNumber={0}
-                finalNumber={score}
-                numberTransformer={x => normalizeCompatibilityScore(x)}
-                onAnimationEnd={onTickerAnimationEnd}
-              />
-            </p>
-          </div>
-        </div>
-        {profileDrawer}
-      </>
-    );
-  }
-
-  // size is 'small'
-  return (
-    <>
       <div
         role="button"
         tabIndex={0}
@@ -119,23 +75,53 @@ export default function PolyculeCard({
         onFocus={onMouseOver}
         onMouseOut={onMouseOut}
         onBlur={onMouseOut}
-        onClick={onCardClick}
-        onKeyPress={onCardKeyPress}
+        onClick={onClick}
+        onKeyPress={onKeyPress}
       >
-        <div className="flex-none px-2 font-mono text-center">{position}</div>
-        <p className={characterNamesClassNames}>{peopleNames}</p>
-        <p className="px-2">
-          <AnimatedNumber
-            useDurationNoise
-            initialNumber={0}
-            finalNumber={score}
-            numberTransformer={x => normalizeCompatibilityScore(x)}
-            onAnimationEnd={onTickerAnimationEnd}
-            durationMs={hasLoadedOnce ? 500 : 2500}
-          />
-        </p>
+        <div className={badgeClassNames}>{position}</div>
+        <div className="flex flex-col items-center space-y-4">
+          <p className={characterNamesClassNames}>{peopleNames}</p>
+          <p className={size === 'large' ? 'text-8xl' : 'text-5xl'}>
+            <AnimatedNumber
+              useDurationNoise
+              key={polycule.id}
+              durationMs={hasLoadedOnce ? 500 : 3500}
+              initialNumber={0}
+              finalNumber={score}
+              numberTransformer={x => normalizeCompatibilityScore(x)}
+              onAnimationEnd={onTickerAnimationEnd}
+            />
+          </p>
+        </div>
       </div>
-      {profileDrawer}
-    </>
+    );
+  }
+
+  // size is 'small'
+  return (
+    <div
+      role="button"
+      tabIndex={0}
+      className={cardClassNames}
+      onMouseOver={onMouseOver}
+      onFocus={onMouseOver}
+      onMouseOut={onMouseOut}
+      onBlur={onMouseOut}
+      onClick={onClick}
+      onKeyPress={onKeyPress}
+    >
+      <div className="flex-none px-2 font-mono text-center">{position}</div>
+      <p className={characterNamesClassNames}>{peopleNames}</p>
+      <p className="px-2">
+        <AnimatedNumber
+          useDurationNoise
+          initialNumber={0}
+          finalNumber={score}
+          numberTransformer={x => normalizeCompatibilityScore(x)}
+          onAnimationEnd={onTickerAnimationEnd}
+          durationMs={hasLoadedOnce ? 500 : 2500}
+        />
+      </p>
+    </div>
   );
 }

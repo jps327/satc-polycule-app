@@ -4,6 +4,7 @@ import BestPolycule from './BestPolycule';
 import FullList from './FullList';
 import HonorableMentions from './HonorableMentions';
 import MultiSelect from '../ui/MultiSelect';
+import PolyculeProfileDrawer from './PolyculeProfileDrawer';
 import React from 'react';
 import choose from '../util/choose';
 import compatibility from '../util/compatibility';
@@ -18,6 +19,9 @@ const ANYONE = 'Anyone';
 const CHARACTER_NAMES = [ANYONE].concat(CHARACTERS.map(char => char.name));
 
 export default function App(): JSX.Element {
+  const [polyculeToView, setPolyculeToView] = React.useState<
+    Polycule | undefined
+  >(undefined);
   const [hasLoadedOnce, setHasLoadedOnce] = React.useState(false);
   const [polyculeSizes, setPolyculeSizes] = React.useState<readonly number[]>([
     3, 4, 5,
@@ -64,6 +68,10 @@ export default function App(): JSX.Element {
     );
   }, [polycules]);
 
+  const onPolyculeCardClick = React.useCallback((polycule: Polycule) => {
+    setPolyculeToView(polycule);
+  }, []);
+
   const onPolyculeSizeChange = React.useCallback((sizes: readonly number[]) => {
     setPolyculeSizes(prevSizes => {
       if (sizes.length === 0) {
@@ -104,6 +112,14 @@ export default function App(): JSX.Element {
     setHasLoadedOnce(true);
   }, []);
 
+  const profileDrawer = (
+    <PolyculeProfileDrawer
+      open={polyculeToView !== undefined}
+      onClose={() => setPolyculeToView(undefined)}
+      polycule={polyculeToView}
+    />
+  );
+
   return (
     <AppContext.Provider value={appContext}>
       <div className="font-sans bg-gray-100 text-slate-900">
@@ -125,11 +141,21 @@ export default function App(): JSX.Element {
               selectedValues={characterFilter}
             />
           </div>
-          <BestPolycule polycule={polyculeResults[0]} />
-          <HonorableMentions polycules={polyculeResults.slice(1, 4)} />
-          <FullList polycules={polyculeResults} />
+          <BestPolycule
+            onCardClick={onPolyculeCardClick}
+            polycule={polyculeResults[0]}
+          />
+          <HonorableMentions
+            onCardClick={onPolyculeCardClick}
+            polycules={polyculeResults.slice(1, 4)}
+          />
+          <FullList
+            onCardClick={onPolyculeCardClick}
+            polycules={polyculeResults}
+          />
         </div>
       </div>
+      {profileDrawer}
     </AppContext.Provider>
   );
 }

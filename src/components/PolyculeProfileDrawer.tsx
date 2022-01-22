@@ -2,12 +2,21 @@ import { Drawer } from '@mui/material';
 import React from 'react';
 import TraitsUtil from '../util/TraitsUtil';
 import normalizeCompatibilityScore from '../util/normalizeCompatibilityScore';
+import usePrevious from '../hooks/usePrevious';
 import type { Polycule, ScoredTrait } from '../types';
 
 type Props = {
   open: boolean;
   onClose: () => void;
-  polycule: Polycule;
+  polycule: Polycule | undefined;
+};
+
+const EMPTY_POLYCULE = {
+  compatibility: {
+    score: 0,
+    traits: [],
+  },
+  characters: [],
 };
 
 export default function PolyculeProfileDrawer({
@@ -15,7 +24,12 @@ export default function PolyculeProfileDrawer({
   onClose,
   polycule,
 }: Props): JSX.Element {
-  const { compatibility, characters } = polycule;
+  // track the previous polyclue just so we can render something while the
+  // drawer slides in/out
+  const prevPolycule = usePrevious(polycule);
+  const { compatibility, characters } =
+    polycule || prevPolycule || EMPTY_POLYCULE;
+
   const peopleNames = characters.map(c => c.name).join(', ');
   const { score, traits } = compatibility;
 
@@ -55,6 +69,7 @@ export default function PolyculeProfileDrawer({
             </h2>
             {renderTraitsBlock(topTraits)}
           </div>
+
           <div className="pl-12 space-y-4">
             <h2 className="text-xl uppercase tracking-wider">
               Least compatible traits
