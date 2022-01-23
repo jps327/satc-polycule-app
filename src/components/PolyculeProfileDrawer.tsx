@@ -58,7 +58,7 @@ export default function PolyculeProfileDrawer({
         <h1 className="text-3xl tracking-widest uppercase">{peopleNames}</h1>
 
         <div className="flex text-lg divide-x divide-gray-700">
-          <div className="pr-12 space-y-4">
+          <div className="pr-12 space-y-4 text-center">
             <h2 className="text-xl tracking-wider uppercase">Overall score</h2>
             <div className="text-4xl">{normalizeCompatibilityScore(score)}</div>
           </div>
