@@ -6,8 +6,8 @@ import usePrevious from '../hooks/usePrevious';
 import type { Polycule, ScoredTrait } from '../types';
 
 type Props = {
-  open: boolean;
   onClose: () => void;
+  open: boolean;
   polycule: Polycule | undefined;
 };
 
@@ -69,9 +69,8 @@ export default function PolyculeProfileDrawer({
             </h2>
             {renderTraitsBlock(topTraits)}
           </div>
-
           <div className="pl-12 space-y-4">
-            <h2 className="text-xl uppercase tracking-wider">
+            <h2 className="text-xl tracking-wider uppercase">
               Least compatible traits
             </h2>
             {renderTraitsBlock(worstTraits)}
