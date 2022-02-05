@@ -1,22 +1,15 @@
-import { CHARACTERS } from '../constants';
+import { ANYONE, CHARACTERS } from '../constants';
 import AppContext from './AppContext';
 import BestPolycule from './BestPolycule';
 import FullList from './FullList';
+import HeaderBar from './HeaderBar';
 import HonorableMentions from './HonorableMentions';
-import MultiSelect from '../ui/MultiSelect';
 import PolyculeProfileDrawer from './PolyculeProfileDrawer';
 import React from 'react';
 import choose from '../util/choose';
 import compatibility from '../util/compatibility';
 import uniqueId from '../util/uniqueId';
 import type { Character, Polycule } from '../types';
-
-const POLYCULE_SIZES = new Array(CHARACTERS.length - 1)
-  .fill(1)
-  .map((_, i) => i + 2);
-
-const ANYONE = 'Anyone';
-const CHARACTER_NAMES = [ANYONE].concat(CHARACTERS.map(char => char.name));
 
 export default function App(): JSX.Element {
   const [polyculeToView, setPolyculeToView] = React.useState<
@@ -123,24 +116,13 @@ export default function App(): JSX.Element {
   return (
     <AppContext.Provider value={appContext}>
       <div className="font-sans bg-gray-100 text-slate-900">
-        <div className="container flex flex-col items-center py-4 mx-auto space-y-8">
-          <div className="w-full">
-            <MultiSelect
-              label="Polycule Size"
-              labelId="polycule-size-select"
-              onChange={onPolyculeSizeChange}
-              options={POLYCULE_SIZES}
-              selectedValues={polyculeSizes}
-            />
-
-            <MultiSelect
-              label="Show polycules with"
-              labelId="polycule-people-filter"
-              onChange={onCharacterFilterChange}
-              options={CHARACTER_NAMES}
-              selectedValues={characterFilter}
-            />
-          </div>
+        <HeaderBar
+          characterFilter={characterFilter}
+          onCharacterFilterChange={onCharacterFilterChange}
+          onPolyculeSizeChange={onPolyculeSizeChange}
+          polyculeSizes={polyculeSizes}
+        />
+        <div className="container pt-32 flex flex-col items-center mx-auto space-y-8 pb-8">
           <BestPolycule
             onCardClick={onPolyculeCardClick}
             polycule={polyculeResults[0]}

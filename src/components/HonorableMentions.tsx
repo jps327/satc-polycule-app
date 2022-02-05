@@ -22,7 +22,7 @@ export default function HonorableMentions({
 
   return (
     <div className="space-y-4">
-      <h1 className="text-2xl tracking-wide uppercase">honorable mentions</h1>
+      <h1 className="text-2xl tracking-wider uppercase">honorable mentions</h1>
       {polycules.length === 0 ? (
         <p>There are no other polycules.</p>
       ) : (

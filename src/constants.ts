@@ -1,5 +1,7 @@
 import type { Character, TraitKey } from './types';
 
+export const ANYONE = 'Anyone';
+
 export const TRAITS: readonly TraitKey[] = [
   'respectsOthers',
   'vulnerability',

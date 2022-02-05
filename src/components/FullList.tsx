@@ -22,7 +22,7 @@ export default function FullList({
 
   return (
     <div className="space-y-4">
-      <h1 className="text-2xl tracking-wide uppercase">all polycules</h1>
+      <h1 className="text-2xl tracking-wider uppercase">all polycules</h1>
       <div className="space-y-2">{cards}</div>
     </div>
   );
