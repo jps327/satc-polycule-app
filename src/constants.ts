@@ -76,7 +76,7 @@ export const CHARACTERS: readonly Character[] = [
         importance: 3,
       },
       validatesOthers: {
-        score: 0.6,
+        score: 0.7,
         importance: 4,
       },
     },
@@ -471,7 +471,7 @@ export const CHARACTERS: readonly Character[] = [
         importance: 3,
       },
       prioritizesKindness: {
-        score: 0.7,
+        score: 0.5,
         importance: 1,
       },
       respectsBoundaries: {
@@ -503,7 +503,7 @@ export const CHARACTERS: readonly Character[] = [
         importance: 4,
       },
       validatesOthers: {
-        score: 0.2,
+        score: 0.8,
         importance: 4,
       },
     },
