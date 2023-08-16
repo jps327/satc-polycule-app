@@ -1,5 +1,7 @@
+import * as React from 'react';
 import { ANYONE, CHARACTERS } from '../constants';
 import Button from '@mui/material/Button';
+import EditCharactersModal from './EditCharactersModal';
 import MultiSelect from '../ui/MultiSelect';
 
 const POLYCULE_SIZES = new Array(CHARACTERS.length - 1)
@@ -21,6 +23,8 @@ export default function HeaderBar({
   onPolyculeSizeChange,
   polyculeSizes,
 }: Props): JSX.Element {
+  const [isEditModalOpen, setIsEditModalOpen] = React.useState(false);
+
   return (
     <div className="w-full fixed shadow z-10 flex justify-between items-center bg-white pt-4 pb-2 px-12">
       <div>
@@ -41,8 +45,14 @@ export default function HeaderBar({
         />
       </div>
       <div className="space-x-4">
-        <Button variant="outlined">Edit characters</Button>
+        <Button variant="outlined" onClick={() => setIsEditModalOpen(true)}>
+          Edit characters
+        </Button>
         <Button variant="outlined">Add yourself</Button>
+        <EditCharactersModal
+          open={isEditModalOpen}
+          onClose={() => setIsEditModalOpen(false)}
+        />
       </div>
     </div>
   );
