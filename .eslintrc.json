@@ -5,10 +5,9 @@
   },
   "extends": [
     "eslint:recommended",
-    "react-app",
-    "react-app/jest",
     "plugin:react/recommended",
-    "airbnb",
+    "plugin:react-hooks/recommended",
+    "plugin:import/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier"
@@ -23,6 +22,8 @@
   },
   "plugins": [
     "react",
+    "react-hooks",
+    "import",
     "jsx-a11y",
     "@typescript-eslint",
     "sort-imports-es6-autofix"
@@ -35,11 +36,23 @@
       {
         "ignoreCase": false,
         "ignoreMemberSort": false,
-        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+        "memberSyntaxSortOrder": [
+          "none",
+          "all",
+          "multiple",
+          "single"
+        ]
       }
     ],
     "react/react-in-jsx-scope": "off",
-    "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
+    "react/jsx-filename-extension": [
+      "warn",
+      {
+        "extensions": [
+          ".tsx"
+        ]
+      }
+    ],
     "react-hooks/exhaustive-deps": [
       "warn",
       {
@@ -56,7 +69,12 @@
         "tsx": "never"
       }
     ],
-    "@typescript-eslint/array-type": ["error", { "default": "array-simple" }],
+    "@typescript-eslint/array-type": [
+      "error",
+      {
+        "default": "array-simple"
+      }
+    ],
     "@typescript-eslint/explicit-function-return-type": [
       "error",
       {

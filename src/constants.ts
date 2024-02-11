@@ -22,6 +22,7 @@ export const TRAITS: readonly TraitKey[] = [
 export const CHARACTERS: readonly Character[] = [
   {
     name: 'Carrie',
+    gender: 'Female',
     traits: {
       respectsOthers: {
         score: 0.6,
@@ -83,6 +84,7 @@ export const CHARACTERS: readonly Character[] = [
   },
   {
     name: 'Miranda',
+    gender: 'Female',
     traits: {
       respectsOthers: {
         score: 0.9,
@@ -144,6 +146,7 @@ export const CHARACTERS: readonly Character[] = [
   },
   {
     name: 'Charlotte',
+    gender: 'Female',
     traits: {
       respectsOthers: {
         score: 0.7,
@@ -205,6 +208,7 @@ export const CHARACTERS: readonly Character[] = [
   },
   {
     name: 'Samantha',
+    gender: 'Female',
     traits: {
       respectsOthers: {
         score: 0.9,
@@ -266,6 +270,7 @@ export const CHARACTERS: readonly Character[] = [
   },
   {
     name: 'Steve',
+    gender: 'Male',
     traits: {
       respectsOthers: {
         score: 0.95,
@@ -327,6 +332,7 @@ export const CHARACTERS: readonly Character[] = [
   },
   {
     name: 'Harry',
+    gender: 'Male',
     traits: {
       respectsOthers: {
         score: 0.9,
@@ -388,6 +394,7 @@ export const CHARACTERS: readonly Character[] = [
   },
   {
     name: 'Smith',
+    gender: 'Male',
     traits: {
       respectsOthers: {
         score: 1,
@@ -449,6 +456,7 @@ export const CHARACTERS: readonly Character[] = [
   },
   {
     name: 'Big',
+    gender: 'Male',
     traits: {
       respectsOthers: {
         score: 0.3,

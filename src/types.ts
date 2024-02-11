@@ -14,15 +14,16 @@ export type TraitKey =
   | 'appreciative'
   | 'validatesOthers';
 
-export interface Trait {
+export type Trait = {
   score: number;
 
   // 1 = not important at all, 5 = deal breaker
   importance: 1 | 2 | 3 | 4 | 5;
-}
+};
 
-export interface Character {
+export type Character = {
   name: string;
+  gender: 'Male' | 'Female' | 'Nonbinary';
   traits: {
     respectsOthers: Trait;
     vulnerability: Trait;
@@ -39,23 +40,23 @@ export interface Character {
     appreciative: Trait;
     validatesOthers: Trait;
   };
-}
+};
 
-export interface ScoredTrait {
+export type ScoredTrait = {
   key: TraitKey;
   score: number;
-}
+};
 
-export interface TraitMetadata {
+export type TraitMetadata = {
   name: string;
   description: string;
-}
+};
 
-export interface Polycule {
+export type Polycule = {
   id: string;
   characters: readonly Character[];
   compatibility: {
     score: number;
     traits: readonly ScoredTrait[];
   };
-}
+};

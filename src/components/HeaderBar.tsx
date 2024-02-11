@@ -1,29 +1,39 @@
 import * as React from 'react';
-import { ANYONE, CHARACTERS } from '../constants';
-import Button from '@mui/material/Button';
-import EditCharactersModal from './EditCharactersModal';
+import { ANYONE } from '../constants';
+import { Character } from '../types';
 import MultiSelect from '../ui/MultiSelect';
 
-const POLYCULE_SIZES = new Array(CHARACTERS.length - 1)
-  .fill(1)
-  .map((_, i) => i + 2);
-
-const CHARACTER_NAMES = [ANYONE].concat(CHARACTERS.map(char => char.name));
-
 type Props = {
+  characters: readonly Character[];
+  maleCharacters: readonly Character[];
+  femaleCharacters: readonly Character[];
   characterFilter: readonly string[];
+  genderFilter: readonly string[];
   onCharacterFilterChange: (sizes: readonly string[]) => void;
+  onGenderFilterChange: (sizes: readonly string[]) => void;
   onPolyculeSizeChange: (sizes: readonly number[]) => void;
   polyculeSizes: readonly number[];
 };
 
 export default function HeaderBar({
+  characters,
+  maleCharacters,
+  femaleCharacters,
   characterFilter,
+  genderFilter,
   onCharacterFilterChange,
+  onGenderFilterChange,
   onPolyculeSizeChange,
   polyculeSizes,
 }: Props): JSX.Element {
-  const [isEditModalOpen, setIsEditModalOpen] = React.useState(false);
+  const characterNames = [ANYONE].concat(characters.map(char => char.name));
+
+  // only allow polycule sizes up to 8
+  const polyculeSizeOptions = new Array(
+    Math.min(Math.max(maleCharacters.length, femaleCharacters.length) - 1, 8),
+  )
+    .fill(1)
+    .map((_, i) => i + 2);
 
   return (
     <div className="w-full fixed shadow z-10 flex justify-between items-center bg-white pt-4 pb-2 px-12">
@@ -32,7 +42,7 @@ export default function HeaderBar({
           label="Polycule Size"
           labelId="polycule-size-select"
           onChange={onPolyculeSizeChange}
-          options={POLYCULE_SIZES}
+          options={polyculeSizeOptions}
           selectedValues={polyculeSizes}
         />
 
@@ -40,18 +50,16 @@ export default function HeaderBar({
           label="Show polycules with"
           labelId="polycule-people-filter"
           onChange={onCharacterFilterChange}
-          options={CHARACTER_NAMES}
+          options={characterNames}
           selectedValues={characterFilter}
         />
-      </div>
-      <div className="space-x-4">
-        <Button variant="outlined" onClick={() => setIsEditModalOpen(true)}>
-          Edit characters
-        </Button>
-        <Button variant="outlined">Add yourself</Button>
-        <EditCharactersModal
-          open={isEditModalOpen}
-          onClose={() => setIsEditModalOpen(false)}
+
+        <MultiSelect
+          label="Show me"
+          labelId="polycule-people-filter"
+          onChange={onGenderFilterChange}
+          options={['Men', 'Women']}
+          selectedValues={genderFilter}
         />
       </div>
     </div>
