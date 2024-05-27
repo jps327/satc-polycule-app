@@ -2,6 +2,8 @@
 
 It's time to _disrupt polyamory_.
 
+![Screenshot of dashboard showing that Harry, Steve, and Charlotte are the best polycule](dashboard-screenshot.png)
+
 ## The Story
 
 Sex and the City is an iconic show that ran from 1998 to 2004. A cultural phenomenon and trailblazing show at the time, depicting social life, sex, and relationships through a lens rarely seen at that time.
