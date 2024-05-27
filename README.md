@@ -12,6 +12,10 @@ But it had one fatal flaw. It was based on the assumption that each protagonist 
 
 I couldn't help but wonder... what if each person could be in an ethically and consenting relationship with more than one person at a time? What would the ideal polycule be? How would we even calculate that? These are the questions society needs to be asking. These are the real problems VCs should be investing in. If we put a man on the moon we can settle once and for all who Carrie _actually_ should have ended up with.
 
+## The Methodology
+
+_This section is unfinished but will soon include step-by-step explanation of the compatibility score algorithm and math._
+
 ## Local Development
 
 1. Clone this repo
