@@ -1,46 +1,17 @@
-# Getting Started with Create React App
+# Sex and the City: The Polycule Compatibility Calculator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+It's time to _disrupt polyamory_.
 
-## Available Scripts
+## The Story
 
-In the project directory, you can run:
+Sex and the City is an iconic show that ran from 1998 to 2004. A cultural phenomenon and trailblazing show at the time, depicting social life, sex, and relationships through a lens rarely seen at that time.
 
-### `npm start`
+But it had one fatal flaw. It was based on the assumption that each protagonist could only end up with _one_ person.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+I couldn't help but wonder... what if each person could be in an ethically and consenting relationship with more than one person at a time? What would the ideal polycule be? How would we even calculate that? These are the questions society needs to be asking. These are the real problems VCs should be investing in. If we put a man on the moon we can settle once and for all who Carrie _actually_ should have ended up with.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Local Development
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Clone this repo
+2. Run `yarn install`
+3. Run `yarn start`
