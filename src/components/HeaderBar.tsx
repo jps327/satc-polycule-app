@@ -4,6 +4,8 @@ import Button from '@mui/material/Button';
 import EditCharactersModal from './EditCharactersModal';
 import MultiSelect from '../ui/MultiSelect';
 
+const SHOW_EXPERIMENTAL_FEATURES = false;
+
 const POLYCULE_SIZES = new Array(CHARACTERS.length - 1)
   .fill(1)
   .map((_, i) => i + 2);
@@ -44,16 +46,18 @@ export default function HeaderBar({
           selectedValues={characterFilter}
         />
       </div>
-      <div className="space-x-4">
-        <Button variant="outlined" onClick={() => setIsEditModalOpen(true)}>
-          Edit characters
-        </Button>
-        <Button variant="outlined">Add yourself</Button>
-        <EditCharactersModal
-          open={isEditModalOpen}
-          onClose={() => setIsEditModalOpen(false)}
-        />
-      </div>
+      {SHOW_EXPERIMENTAL_FEATURES ? (
+        <div className="space-x-4">
+          <Button variant="outlined" onClick={() => setIsEditModalOpen(true)}>
+            Edit characters
+          </Button>
+          <Button variant="outlined">Add yourself</Button>
+          <EditCharactersModal
+            open={isEditModalOpen}
+            onClose={() => setIsEditModalOpen(false)}
+          />
+        </div>
+      ) : null}
     </div>
   );
 }
