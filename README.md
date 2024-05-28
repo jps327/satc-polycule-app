@@ -6,7 +6,7 @@ And just like that... [Explore the polycules.](https://satc-polycules.netlify.ap
 
 ## The Story
 
-Sex and the City is an iconic show that ran from 1998 to 2004. A cultural phenomenon and trailblazing show at the time, depicting social life, sex, and relationships through a lens rarely seen at that time.
+Sex and the City is an iconic show that ran from 1998 to 2004. It was a cultural phenomenon and trailblazing show at the time, depicting social life, sex, and relationships through a lens rarely seen at that time.
 
 But it had one fatal flaw. It was based on the assumption that each protagonist could only end up with **one** person.
 
