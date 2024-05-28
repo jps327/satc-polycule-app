@@ -1,6 +1,6 @@
 # Sex and the City: The Polycule Compatibility Calculator
 
-It's time to **disrupt polyamory**. [Browse the polycules.](https://satc-polycules.netlify.app/)
+And just like that... [Explore the polycules.](https://satc-polycules.netlify.app/)
 
 ![Screenshot of dashboard showing that Harry, Steve, and Charlotte are the best polycule](dashboard-screenshot.png)
 
