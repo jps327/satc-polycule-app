@@ -40,9 +40,10 @@ export default function PolyculeCard({
   const cardClassNames = classNames(
     'relative bg-white border border-gray-300 rounded shadow-md cursor-pointer hover:border-gray-400 hover:shadow-2xl hover:transition-all transition-all',
     {
-      'p-8 w-96': size === 'large',
+      'p-8 w-[22rem] sm:w-96': size === 'large',
       'py-4 px-6 w-56': size === 'medium',
-      'py-2 w-96 flex divide-x divide-gray-300 px-2': size === 'small',
+      'py-2 w-[22rem] sm:w-96 flex divide-x divide-gray-300 px-2':
+        size === 'small',
     },
   );
 
