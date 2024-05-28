@@ -97,7 +97,6 @@ export default function PolyculeCard({
     );
   }
 
-  // size is 'small'
   return (
     <div
       role="button"

@@ -122,7 +122,7 @@ export default function App(): JSX.Element {
           onPolyculeSizeChange={onPolyculeSizeChange}
           polyculeSizes={polyculeSizes}
         />
-        <div className="container pt-32 flex flex-col items-center mx-auto space-y-8 pb-8">
+        <div className="container pt-48 sm:pt-32 flex flex-col items-center mx-auto space-y-8 pb-8">
           <BestPolycule
             onCardClick={onPolyculeCardClick}
             polycule={polyculeResults[0]}
