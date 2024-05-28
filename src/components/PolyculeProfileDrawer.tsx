@@ -46,7 +46,7 @@ export default function PolyculeProfileDrawer({
     traitsToRender: ScoredTrait[],
   ): React.ReactChild[] =>
     traitsToRender.map(trait => (
-      <div key={trait.key}>
+      <div className="text-left" key={trait.key}>
         {TraitsUtil.getName(trait.key)} |{' '}
         {normalizeCompatibilityScore(trait.score)}
       </div>
@@ -54,23 +54,27 @@ export default function PolyculeProfileDrawer({
 
   return (
     <Drawer anchor="bottom" open={open} onClose={onClose}>
-      <div className="mx-24 my-8 space-y-8">
+      <div className="sm:mx-24 my-4 sm:my-8 space-y-3 sm:space-y-8 px-12">
         <h1 className="text-3xl tracking-widest uppercase">{peopleNames}</h1>
 
-        <div className="flex text-lg divide-x divide-gray-700">
-          <div className="pr-12 space-y-4 text-center">
-            <h2 className="text-xl tracking-wider uppercase">Overall score</h2>
-            <div className="text-4xl">{normalizeCompatibilityScore(score)}</div>
+        <div className="flex flex-col text-base sm:text-lg divide-y divide-gray-300 sm:divide-y-0 sm:divide-x sm:flex-row">
+          <div className="pb-2 sm:pb-0 sm:pr-12 space-y-2 sm:space-y-4">
+            <h2 className="text-lg tracking-wide sm:text-xl sm:tracking-wider uppercase">
+              Overall score
+            </h2>
+            <div className="text-left text-4xl">
+              {normalizeCompatibilityScore(score)}
+            </div>
           </div>
 
-          <div className="px-12 space-y-4">
-            <h2 className="text-xl tracking-wider uppercase">
+          <div className="py-2 sm:py-0 sm:px-12 space-y-2 sm:space-y-4">
+            <h2 className="text-lg sm:text-xl tracking-wide sm:tracking-wider uppercase">
               Most compatible traits
             </h2>
             {renderTraitsBlock(topTraits)}
           </div>
-          <div className="pl-12 space-y-4">
-            <h2 className="text-xl tracking-wider uppercase">
+          <div className="sm:pl-12 space-y-2 sm:space-y-4">
+            <h2 className="pt-2 sm:pt-0 text-lg sm:text-xl tracking-wide sm:tracking-wider uppercase">
               Least compatible traits
             </h2>
             {renderTraitsBlock(worstTraits)}
