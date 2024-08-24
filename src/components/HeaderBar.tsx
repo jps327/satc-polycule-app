@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ANYONE, CHARACTERS } from '../constants';
 import Button from '@mui/material/Button';
 import EditCharactersModal from './EditCharactersModal';
+import GithubIcon from './GithubIcon';
 import MultiSelect from '../ui/MultiSelect';
 
 const SHOW_EXPERIMENTAL_FEATURES = false;
@@ -37,7 +38,6 @@ export default function HeaderBar({
           options={POLYCULE_SIZES}
           selectedValues={polyculeSizes}
         />
-
         <MultiSelect
           label="Show polycules with"
           labelId="polycule-people-filter"
@@ -46,6 +46,7 @@ export default function HeaderBar({
           selectedValues={characterFilter}
         />
       </div>
+      <GithubIcon />
       {SHOW_EXPERIMENTAL_FEATURES ? (
         <div className="space-x-4">
           <Button variant="outlined" onClick={() => setIsEditModalOpen(true)}>
