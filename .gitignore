@@ -24,3 +24,6 @@ yarn-error.log*
 
 *.swp
 *credentials.json
+
+# Local Netlify folder
+.netlify
