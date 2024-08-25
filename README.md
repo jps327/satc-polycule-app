@@ -85,7 +85,7 @@ There has to be some way to boost your score if you are good at a trait that is 
 So I am going for a threshold-based reward function, denoted $\phi(i, j, k)$, where:
 
 $$
-\phi(i,j,k) = \left\{ \begin{array}{ll}
+\phi(i,j,k) = \left\lbrace \begin{array}{ll}
      (1 - \gamma_{i,j,k}) R & \text{if } I(i, j) > 0.5 \\
      0 & \text{if } I(i, j) \leq 0.5
  \end{array} \right.
