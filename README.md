@@ -112,7 +112,7 @@ $$
 
 ### Chaotic energy factor
 
-We're almost there! Until now, we've represented a polycule's compatibility as the average of all pairwise compatibilities. This is a reasonable start, but it implies that a polycule is just a sum of 2-person relationships, which is inaccurate. Anybody who's watched [Steven Universe](https://en.wikipedia.org/wiki/Steven_Universe) understands that a relationship is not just the sum of its parts, but is also holistically it's own distinct entity. Therefore, we need some way to quantify the $K$-cule's holistic energy, without relying on pairwise interactions.
+We're almost there! Until now, we've represented a polycule's compatibility as the average of all pairwise compatibilities. This is a reasonable start, but it implies that a polycule is just a sum of 2-person relationships, which is inaccurate. Anybody who's watched [Steven Universe](https://www.youtube.com/watch?v=F4AJfasBRxA) understands that a relationship is not just the sum of its parts, but is also holistically it's own distinct entity. Therefore, we need some way to quantify the $K$-cule's holistic energy, without relying on pairwise interactions.
 
 Let's imagine a $K$-cule as an atom, where the nucleus is the relationship itself and the protons in the nucleus are the polycule partners. How "stable" is this nucleus? If a proton strongly pulls away from the others or if the protons are repelling each other too much, the nucleus becomes more unstable and is more likely to decay. The polycule becomes less compatible. If we can quantify how chaotic (or stable) a polycule is per trait, which we'll call the Chaotic Energy Factor, $E$, we can scale the polycule's pairwise trait score by this factor.
 
