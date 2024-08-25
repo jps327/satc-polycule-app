@@ -123,7 +123,7 @@ Lastly, we still want to consider the average importance of this trait. For exam
 Let $T_{avg}(i)$ and $I_{avg}(i)$ be the average trait score and average importance, respectively, for the $i$th traits among all partners in the polycule. The Chaotic Energy Factor for the $i$th trait is given by:
 
 $$
-E_i = \Big(1 - \frac{1}{K}\sum_{j=1}^{K} (T(i, j) - T_{avg}(i)^2 \Big)^{2 I_{avg}(i)}
+E_{i} = \Big(1 - \frac{1}{K}\sum_{j=1}^{K} (T(i, j) - T_{avg}(i)^2 \Big)^{2 I_{avg}(i)}
 $$
 
 ### And just like that...
@@ -131,6 +131,6 @@ $$
 The final Polycule Compatibility Score equation is:
 
 $$
-C_{K,N} = \frac{1}{N} \sum_{i=1}^{N} \Bigg( \frac{E_i}{K(K-1)} \sum_{j=1}^{K} \sum_{k=1,j \neq k}^{K} \Bigg( \gamma_{i, j, k} + \phi(i, j, k)
+C_{K,N} = \frac{1}{N} \sum_{i=1}^{N} \Bigg( \frac{E_{i}}{K(K-1)} \sum_{j=1}^{K} \sum_{k=1,j \neq k}^{K} \Bigg( \gamma_{i, j, k} + \phi(i, j, k)
 \Bigg) \Bigg)
 $$
