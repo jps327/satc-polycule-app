@@ -62,7 +62,7 @@ $$
 C_{K,N} = \frac{1}{N} \sum_{i=1}^{N} \Bigg( \frac{1}{K(K-1)} \sum_{j=1}^{K} \sum_{k=1,j \neq k}^{K} T(i,k) ^{2G(I(i,j))} \Bigg)
 $$
 
-Each individual trait score is now exponentiated by 2 times the importance percentile. The exponentiation is a convenient way to reduce a score if the importance percentile is high, but increase a score if the importance percentile is low. So now, the worse partners are at important traits, the lower the score will be. The nested loop lets us capture all pairwise interactions in the $K$-cule, so one person's performance on an individual trait may have a good score for one partner but a low score for another partner, depending on how important that trait is to those partners.
+Each individual trait score is now exponentiated by 2 times the importance percentile. The exponentiation is a convenient way to reduce a score if the importance percentile is high, but increase a score if the importance percentile is low. So now, being bad at an important trait will lower the score more, but being bad at an unimportant trait will not penalize the score nearly as much. The nested loop lets us capture all pairwise interactions in the $K$-cule, so one person's performance on an individual trait may have a good score for one partner but a low score for another partner, depending on how important that trait is to those partners.
 
 To simplify, we will define $\gamma_{i,j,k}$ as the pairwise trait score between person's $j$ and $k$ on trait $i$, as follows:
 
