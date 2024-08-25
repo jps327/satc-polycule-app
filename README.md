@@ -114,7 +114,7 @@ $$
 
 We're almost there! Until now, we've represented a polycule's compatibility as the average of all pairwise compatibilities. This is a reasonable start, but it implies that a polycule is just a sum of 2-person relationships, which is inaccurate. Anybody who's watched [Steven Universe](https://en.wikipedia.org/wiki/Steven_Universe) understands that a relationship is not just the sum of its parts, but is also holistically it's own distinct entity. Therefore, we need some way to quantify the $K$-cule's holistic energy, without relying on pairwise interactions.
 
-Let's imagine a $K$-cule as an atom, where the nucleus is the relationship itself and the protons in the nucleus are the polycule partners. How "stable" is this nucleus? If a proton strongly pulls away from the others or if the protons are repelling each other too much, the nucleus becomes more unstable and is more likely to decay. The polycule becomes less compatible. If we can quantify how chaotic (or stable) a polycule is, which we'll call the Chaotic Energy Factor, $\Epsilon$, we can scale the full polycule's average pairwise score by this factor.
+Let's imagine a $K$-cule as an atom, where the nucleus is the relationship itself and the protons in the nucleus are the polycule partners. How "stable" is this nucleus? If a proton strongly pulls away from the others or if the protons are repelling each other too much, the nucleus becomes more unstable and is more likely to decay. The polycule becomes less compatible. If we can quantify how chaotic (or stable) a polycule is, which we'll call the Chaotic Energy Factor, $E$, we can scale the full polycule's average pairwise score by this factor.
 
 Rather than relying on quantum physics to measure stability, I decided to make my life easier and turn to basic statistics and use a mean squared error (MSE). Let's assume that the MSE of a $K$-cule's trait scores is a good proxy for a polycule's stability. Why? Well, imagine a polycule where everyone has similar levels of honesty. That feels pretty stable, right? Now imagine one where everyone is similar except for 1 person who is an honesty wildcard. Feels a little bit more chaotic now. Now imagine one where everyone has **very** different honesty scores, so the MSE is quite large. Feels quite chaotic, right? Great! Our assumption passes the vibe check.
 
@@ -123,7 +123,7 @@ Lastly, we still want to consider the average importance of this trait. For exam
 Let $T_{avg}(i)$ and $I_{avg}(i)$ be the average trait score and average importance, respectively, for the $i$th traits among all partners in the polycule. The Chaotic Energy Factor is given by:
 
 $$
-\Epsilon = \Big(1 - \frac{1}{K}\sum_{j=1}^{K} (T(i, j) - T_{avg}(i)^2 \Big)^{2 I_{avg}(i)}
+E = \Big(1 - \frac{1}{K}\sum_{j=1}^{K} (T(i, j) - T_{avg}(i)^2 \Big)^{2 I_{avg}(i)}
 $$
 
 ### And just like that...
@@ -131,6 +131,6 @@ $$
 The final Polycule Compatbility Score equation is:
 
 $$
-C_{K,N} = \frac{1}{N} \sum_{i=1}^{N} \Bigg( \frac{\Epsilon}{K(K-1)} \sum_{j=1}^{K} \sum_{k=1,j \neq k}^{K} \Bigg( \gamma_{i, j, k} + \phi(i, j, k)
+C_{K,N} = \frac{1}{N} \sum_{i=1}^{N} \Bigg( \frac{E}{K(K-1)} \sum_{j=1}^{K} \sum_{k=1,j \neq k}^{K} \Bigg( \gamma_{i, j, k} + \phi(i, j, k)
 \Bigg) \Bigg)
 $$
