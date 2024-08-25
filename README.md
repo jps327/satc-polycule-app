@@ -40,7 +40,7 @@ Where $X(i)$ is the polycule's score on the $i$-th trait. So now the task has si
 
 Now let's assume there are $K$ partners in the polycule (a $K$-cule, if you will). Now let's assume that each individual has a score for each trait. For example, each individual now has an honesty score or an affectionate score. These scores will need to be assumed and you can explore the [constants.ts](https://github.com/jps327/satc-polycule-app/blob/main/src/constants.ts) file to see the scores I gave each "Sex and the City" character on each trait. If you disagree with my scores, please do **not** open a github issue or pull request. I am not taking feedback on this. My mind is made up.
 
-Let $T(i, j)$ be the $i$-th trait score for the $j$th individual, where scores are between 0 and 1 (inclusive). The Polycule Compabibility Score for a $K$-cule across $N$ traits, denoted by $C_{K,N}$, can be represented as:
+Let $T(i, j)$ be the $i$-th trait score for the $j$-th individual, where scores are between 0 and 1 (inclusive). The Polycule Compabibility Score for a $K$-cule across $N$ traits, denoted by $C_{K,N}$, can be represented as:
 
 $$
 C_{K,N} = \frac{1}{N} \sum_{i=1}^{N} \Bigg( \frac{1}{K} \sum_{j=1}^{K} T(i,j) \Bigg)
@@ -50,7 +50,7 @@ But this is a naive equation because it just assumes that a polycule's score on 
 
 Each individual will now have both a performance score for a given trait and a measure of how important it is to them that their partner exhibit this trait. The argument here is that if a trait is very important to someone, being less than perfect on that trait should have a negative effect on the polycule's score. And vice versa, if a trait is very unimportant to someone, it doesn't matter how bad others are at that trait, it won't really affect the polycule's health.
 
-Let $I(i, j)$ be how important it is for the $j$th person that a partner of theirs be good at the $i$-th trait. For simplicity, let's assume importance is measured with a 5-point likert scale (the reasoning is that one day this app might be extended to let you score yourself, and it is easier for people to think in likert scales). So $I(i, j) \in {0, 0.25, 0.5, 0.75, 1}$.
+Let $I(i, j)$ be how important it is for the $j$-th person that a partner of theirs be good at the $i$-th trait. For simplicity, let's assume importance is measured with a 5-point likert scale (the reasoning is that one day this app might be extended to let you score yourself, and it is easier for people to think in likert scales). So $I(i, j) \in {0, 0.25, 0.5, 0.75, 1}$.
 
 Perosnally, if asked, I don't think that we coneptualize "importance" in a linear scale. I think it's closer to a bell curve. Most people will see the importance of a trait somewhere between "important" or "unimportant," but the extremes ("extremely important" or "extremely unimportant") are a lot less common. So we need some way to convert the importance score to a percentile. What we really want to know is, given an importance value $I(i, j)$, what percentile of the general population am I in how important I see that trait? That "importance percentile" should be the true "importance score."
 
