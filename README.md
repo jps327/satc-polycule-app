@@ -31,7 +31,7 @@ So let's begin!
 Let's assume we have $N$ traits and the polycule can receive a score on each of those traits. A trait is something like "honesty" or "respect for each other" and we're assuming that a polycule's "performance" on this trait can be represented as a single number. If we're assuming that the chosen $N$ traits are indeed conducive to successful relationships, then let's define the Polycule Compatibility Score across $N$ traits, denoted by $C_N$, as the average of how good a polycule is across the $N$ traits conducive to a healthy relationship.
 
 $$
-C_N = \frac{1}{N} \sum_{N}^{i=1} X(i)
+C_N = \frac{1}{N} \sum_{i=1}^{N} X(i)
 $$
 
 Where $X(i)$ is the polycule's score on the $i$-th trait. So now the task has simplified to: **how do you calculate a polycule's score for a single trait?**
